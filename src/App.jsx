@@ -75,7 +75,14 @@ const App = () => {
             </ul>
 
             <h3>Instructions:</h3>
-            <p>{selectedRecipe.instructions}</p>
+            <ol>
+              {selectedRecipe.instructions
+                .split(/\r?\n/)
+                .filter((line) => line.trim())
+                .map((step, i) => (
+                  <li key={i}>{step.trim()}</li>
+                ))}
+            </ol>
           </div>
         </div>
       )}
